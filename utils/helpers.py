@@ -1,7 +1,9 @@
 """utils/helpers.py — Small shared utilities."""
 
+from typing import Dict, List
 
-def memory_label(store: list[dict]) -> str:
+
+def memory_label(store: List[Dict]) -> str:
     """Return a short label like '4 turns remembered'."""
     turns = len(store) // 2
     if turns == 0:

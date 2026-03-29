@@ -5,10 +5,15 @@ Stack : LangChain + LangGraph + Streamlit
 
 from typing import Dict, List
 
+import os
+
 import streamlit as st
+from dotenv import load_dotenv
 
 from agent.graph import build_agent
 from utils.helpers import memory_label, sanitise
+
+load_dotenv()
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -68,11 +73,14 @@ div[data-testid="stMetric"] { background:var(--surface); border:1px solid var(--
 
 # ── Resolve API key (sidebar input OR Streamlit secrets) ──────────────────────
 def _get_secret_key() -> str:
-    """Read API key from st.secrets if available (Streamlit Cloud deployment)."""
+    """Read API key from st.secrets if available (Streamlit Cloud) or environment (HF Spaces)."""
     try:
-        return st.secrets.get("OPENAI_API_KEY", "")
+        if "OPENAI_API_KEY" in st.secrets:
+            return st.secrets["OPENAI_API_KEY"]
     except Exception:
-        return ""
+        pass
+    
+    return os.environ.get("OPENAI_API_KEY", "")
 
 
 # ── Session state ─────────────────────────────────────────────────────────────
