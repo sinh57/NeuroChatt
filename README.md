@@ -7,6 +7,7 @@ sdk: streamlit
 sdk_version: 1.35.0
 app_file: app.py
 pinned: false
+python_version: 3.11
 ---
 
 # 🧠 NeuroChat — Conversational AI with Memory & Tools
