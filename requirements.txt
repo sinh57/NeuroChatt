@@ -1,0 +1,19 @@
+# Core
+streamlit>=1.35.0
+
+# LangChain — pinned to 0.2.x where AgentExecutor is in langchain.agents
+langchain==0.2.16
+langchain-core==0.2.38
+langchain-openai==0.1.20
+langchain-community==0.2.16
+langgraph>=0.2.0
+
+# OpenAI
+openai>=1.40.0
+
+# Tools (no API key needed)
+wikipedia>=1.4.0
+duckduckgo-search>=6.2.0
+
+# Env
+python-dotenv>=1.0.0
